@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Resources.Styles.FontIcons">
+
+    <x:String x:Key="DeleteIcon">&#xf1f8;</x:String>
+    <x:String x:Key="EditIcon">&#xf044;</x:String>
+    <x:String x:Key="AddIcon">&#x2b;</x:String>
+    <x:String x:Key="CopyIcon">&#xf0c5;</x:String>
+    <x:String x:Key="ErrorIcon">&#xf071;</x:String>
+    <x:String x:Key="SuccessIcon">&#xf058;</x:String>
+    <x:String x:Key="QuestionIcon">&#xf059;</x:String>
+    <x:String x:Key="SortAtoZ">&#xf15e;</x:String>
+    <x:String x:Key="SortTime">&#xf1da;</x:String>
+    
+
+</ResourceDictionary>

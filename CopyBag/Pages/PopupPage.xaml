@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Pages.PopupPage"
+           x:Name="PopupMct"
+             Background="Transparent"
+             BackgroundColor="Transparent">
+        <Border x:Name="PopupPanel" WidthRequest="200" FlowDirection="RightToLeft"
+            VerticalOptions="End"
+            Background="{StaticResource OffBlack}"
+            StrokeShape="{RoundRectangle CornerRadius=20}"
+            Margin="15"
+            Padding="15">
+            <HorizontalStackLayout Spacing="15">
+                <Image x:Name="imgIcon" WidthRequest="20">
+                    <Image.Source>
+                        <FontImageSource x:Name="fontimg" FontFamily="FAPR" Glyph="{StaticResource EditIcon}" Color="{StaticResource PrimaryDark}"/>
+                    </Image.Source>
+                </Image>
+                <Label TextColor="{x:StaticResource Secondary}" FontAttributes="Bold" x:Name="popupLbl" />
+            </HorizontalStackLayout>
+        </Border>
+</ContentPage>

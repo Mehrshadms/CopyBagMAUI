@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Pages.ContactGroupPage"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:model="clr-namespace:CopyBag.Models.Contacts"
+             xmlns:viewmodel="clr-namespace:CopyBag.ViewModels"
+             x:DataType="viewmodel:ContactGroupViewModel"
+             Title="کیف کپی">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="گروه جدید"
+         Command="{Binding AddContactGroupCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource  FontFamily="FAPR" Glyph="{StaticResource AddIcon}" Color="{StaticResource SecondaryDarkText}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid Padding="20" RowDefinitions="Auto,*" ColumnSpacing="5" ColumnDefinitions="Auto,Auto,*"
+           RowSpacing="30" FlowDirection="RightToLeft">
+
+        <Button Grid.Column="0" x:Name="SortTimeBtn" Style="{StaticResource SortButtonStyle}" Clicked="SortButton_Click"
+             ToolTipProperties.Text="فیلتر بر اساس تاریخ ایجاد"
+             Command="{Binding SortTimeCommand}">
+            <Button.ImageSource>
+                <FontImageSource FontFamily="FAPR" Glyph="{StaticResource SortTime}"/>
+            </Button.ImageSource>
+        </Button>
+        <Button Grid.Column="1" x:Name="SortAtoZBtn" Style="{StaticResource SortButtonStyle}" Clicked="SortButton_Click" 
+             ToolTipProperties.Text="فیلتر بر اساس نام گروه"
+             Command="{Binding SortAtoZCommand}">
+            <Button.ImageSource>
+                <FontImageSource FontFamily="FAPR" Glyph="{StaticResource SortAtoZ}"/>
+            </Button.ImageSource>
+        </Button>
+        <Entry Grid.Column="2" Placeholder="جستجوی گروه ها"
+Text="{Binding SearchText}" TextChanged="Entry_TextChanged">
+        </Entry>
+                <CollectionView  Margin="-20,0,-30,0" Grid.ColumnSpan="3" Grid.Row="1"  
+            ItemsSource="{Binding Groups}" SelectionMode="None" >
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <skia:SKLottieView Source="emptylist.json"
+                            RepeatMode="Reverse"
+RepeatCount="-1"
+HeightRequest="300"
+WidthRequest="300"
+/>
+                    <Label HorizontalOptions="Center" FontSize="Subtitle" TextColor="{StaticResource Primary}"
+ Text="چیزی پیدا نکردم ، چطوره خودت یکی بسازی؟"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate  x:DataType="model:ContactGroup">
+                    <Grid Padding="20,5">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem BackgroundColor="{StaticResource RedButtonDark}"
+Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ContactGroupViewModel}},Path=DeleteContactGroupCommand}"
+CommandParameter="{Binding Id}">
+                                        <SwipeItem.IconImageSource>
+                                            <FontImageSource FontFamily="FAPR" Glyph="{StaticResource DeleteIcon}"/>
+                                        </SwipeItem.IconImageSource>
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem BackgroundColor="{StaticResource PrimaryDark}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ContactGroupViewModel}},Path=EditContactGroupCommand}"
+                            CommandParameter="{Binding Id}">
+                                        <SwipeItem.IconImageSource>
+                                            <FontImageSource FontFamily="FAPR" Glyph="{StaticResource EditIcon}"/>
+                                        </SwipeItem.IconImageSource>
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ContactGroupViewModel}},Path=GoToContactPageByCommand}"
+                                                          CommandParameter="{Binding Id}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid ColumnSpacing="14" ColumnDefinitions=".8*,auto,auto">
+
+                                    <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="24" 
+                                           Text="{Binding GroupName}"/>
+
+                                    <ImageButton Grid.Column="1" Style="{StaticResource CircularImageButton}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ContactGroupViewModel}},Path=EditContactGroupCommand}"
+                                            CommandParameter="{Binding Id}">
+                                        <ImageButton.Source>
+                                            <FontImageSource FontFamily="FAPR" Glyph="{StaticResource EditIcon}" Color="{StaticResource Primary}" />
+                                        </ImageButton.Source>
+                                    </ImageButton>
+
+                                    <ImageButton Grid.Column="2" Style="{StaticResource CircularImageButton}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ContactGroupViewModel}},Path=DeleteContactGroupCommand}"
+                                            CommandParameter="{Binding Id}">
+                                        <ImageButton.Source>
+                                            <FontImageSource FontFamily="FAPR" Glyph="{StaticResource DeleteIcon}" Color="{StaticResource RedButton}"/>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Resources.Styles.CustomStyle">
+
+    <Style TargetType="ImageButton" x:Key="CircularImageButton">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="MaximumHeightRequest" Value="44"/>
+        <Setter Property="MaximumWidthRequest" Value="44"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.5" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver" />
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        <Setter Property="IsVisible">
+            <OnPlatform x:TypeArguments="x:Boolean" Default="True">
+                <On Platform="IOS,Android" Value="False"/>
+            </OnPlatform>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SortButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="BackgroundColor" Value="{x:StaticResource PrimaryDark}"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <!-- Add any other styling properties you desire -->
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="SortButtonStates">
+                    <VisualState x:Name="UnSelected">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </VisualState.Setters>
+                        <!-- Define the normal state appearance here -->
+                    </VisualState>
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="Opacity" Value="1.0"/>
+                        </VisualState.Setters>
+                        <!-- Define the selected state appearance here -->
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

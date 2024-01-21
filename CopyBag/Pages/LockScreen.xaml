@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Pages.LockScreen"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             Title="LockScreen"
+             xmlns:viewmodel="clr-namespace:CopyBag.ViewModels"
+             x:DataType="viewmodel:LockScreenViewModel">
+    <Grid Padding="40,10" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10" FlowDirection="RightToLeft">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="2,0" EndPoint="2,1">
+                <GradientStop Color="#0061FF" Offset="0" />
+                <GradientStop Color="#60EFFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <skia:SKLottieView Grid.Row="0" Source="lockscreen.json"
+                            RepeatCount="-1"
+                            HeightRequest="200"
+                            WidthRequest="200"/>
+        <Entry x:Name="PassworyEntry" Grid.Row="1" Placeholder="گذرواژه" WidthRequest="350" IsPassword="true" FontSize="24" TextColor="White" BackgroundColor="#2B2B2B"  HorizontalOptions="Center" />
+        
+        <ActivityIndicator HeightRequest="70" WidthRequest="70" Color="{StaticResource White}" Grid.Row="2" x:Name="LoadingIndicator" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Button Padding="20" Grid.Row="3" Margin="40" WidthRequest="200" x:Name="btnSubmit" Clicked="btnSubmit_Clicked" Text="بازگشایی" FontSize="20" BackgroundColor="{StaticResource OffBlack}" TextColor="White" HorizontalOptions="FillAndExpand" />
+    </Grid>
+</ContentPage>

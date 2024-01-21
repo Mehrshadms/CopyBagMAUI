@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CopyBag.Pages.CopyBagSettingPage"
+             Title="تنظیمات کاربری">
+
+    <Grid FlowDirection="RightToLeft" HorizontalOptions="Center" Padding="30" ColumnSpacing="20" RowSpacing="40" ColumnDefinitions=".35*,.65*" RowDefinitions=" Auto,Auto,*,Auto">
+            <Label FontSize="Large" Text="پرسش گذرواژه هنگام ورود" />
+        <Switch Grid.Column="1" x:Name="AskPasswordSwitch" Toggled="AskPasswordToggle_Toggled" />
+        <Line BackgroundColor="Beige" StrokeThickness="3" WidthRequest="400" Stroke="Red"></Line>
+        <Label FontSize="Large" Grid.Row="1" Grid.Column="0" Text="تغییر گذرواژه"  />
+        <Button FontSize="Medium" Grid.Row="1" Grid.Column="1" x:Name="ChangePasswordButton" 
+                 Text="تغییر گذرواژه" Clicked="ChangePasswordButton_Clicked"  />
+
+        <Label FontSize="Large" Grid.Row="3" Grid.Column="0" Text="حذف تمامی اطلاعات"  />
+        <Button FontSize="Medium" Grid.Row="3" BackgroundColor="{StaticResource RedButton}" Grid.Column="1" x:Name="DeleteAllDataButton" Text="حذف" Clicked="DeleteAllDataButton_Clicked"  />
+    </Grid>
+</ContentPage>

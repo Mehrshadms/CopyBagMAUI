@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+           xmlns:viewmodel="clr-namespace:CopyBag.ViewModels"
+           x:DataType="viewmodel:CopyItemsViewModel"
+             x:Class="CopyBag.Pages.CopyItemPopup"
+           Color="Transparent">
+
+    <ContentView x:Name="CopyItemPanel" WidthRequest="300" HeightRequest="330">
+        <Frame>
+            <Grid RowSpacing="20" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button x:Name="ToggleBtn" Text="حالت 2 در 1" Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Clicked="ToggleInputs_Click"/>
+
+                <VerticalStackLayout x:Name="SingleCopyItem" Grid.ColumnSpan="2" Grid.Row="1" Spacing="10" >
+                    <Entry x:Name="TitleEntry" Placeholder="عنوان آیتم" PlaceholderColor="{StaticResource PrimaryDark}" Text="{Binding TitleItemCopy}" />
+                    <Entry x:Name="FirstTitleCopyEntry" Placeholder="عنوان کپی اول" PlaceholderColor="{StaticResource Primary}" Text="{Binding PopupTitleOne}" />
+                    <Entry x:Name="FirstTextCopyEntry" Placeholder="متن کپی اول" PlaceholderColor="{StaticResource SecondaryDarkText}" Text="{Binding PopupCopyTextOne}" />
+                    <Entry x:Name="SecondTitleEntry" IsVisible="false" Opacity="0" Placeholder="عنوان کپی دوم" PlaceholderColor="{StaticResource Primary}" Text="{Binding PopupTitleTwo}"/>
+                    <Entry x:Name="SecondCopyEntry" IsVisible="false" Opacity="0" Placeholder="متن کپی دوم" PlaceholderColor="{StaticResource SecondaryDarkText}" Text="{Binding PopupCopyTextTwo}"/>
+                </VerticalStackLayout>
+
+                <Button x:Name="CloseBtn" Grid.Row="2" Grid.Column="0" Command="{Binding ClosePopCommand}" Clicked="CloseBtn_Clicked" BackgroundColor="{StaticResource RedButtonDark}" Text="لغو" />
+                <Button x:Name="SubmitBtn" Clicked="CloseBtn_Clicked" Command="{Binding ExcutePopupTaskCommand}" Grid.Row="2" Grid.Column="1" Text="تایید" />
+            </Grid>
+        </Frame>
+    </ContentView>
+
+</mct:Popup>
